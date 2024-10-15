@@ -16,9 +16,6 @@ struct DefaultAllocator {
 
 template <typename T, typename Allocator = DefaultAllocator<T>>
 class Vector {
-    template <typename Y, typename OtherAllocator>
-    friend class Vector;
-
 public:
     class Iterator {
     public:
