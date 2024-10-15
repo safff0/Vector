@@ -201,7 +201,7 @@ public:
         return data_[size_ - 1];
     }
 
-    T* Data() {
+    T* Data() const {
         return data_;
     }
 
@@ -243,7 +243,7 @@ public:
     }
 
 private:
-    void Reallocate(size_t new_capacity) {
+    void Reallocate(size_t new_capacity) noexcept {
         T* new_data = allocator_.allocate(new_capacity);
         for (size_t index = 0; index < size_; ++index) {
             new_data[index] = data_[index];
@@ -253,13 +253,13 @@ private:
         capacity_ = new_capacity;
     }
 
-    void ReallocateIfNeeded() {
+    void ReallocateIfNeeded() noexcept {
         if (size_ == capacity_) {
             Reallocate(2 * capacity_);
         }
     }
 
-    void Reset() {
+    void Reset() noexcept {
         allocator_.deallocate(data_, capacity_);
         size_ = 0;
         capacity_ = 0;
