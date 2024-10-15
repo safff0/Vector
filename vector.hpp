@@ -242,6 +242,10 @@ public:
         }
     }
 
+    void ShrinkToFit() {
+        Reallocate(size_);
+    }
+
 private:
     void Reallocate(size_t new_capacity) noexcept {
         T* new_data = allocator_.allocate(new_capacity);
