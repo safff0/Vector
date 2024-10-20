@@ -1,9 +1,3 @@
-# Vector
-
-A simple implementation of std::vector.
-
-## example.cpp
-```C++
 #include "vector.hpp"
 
 #include <initializer_list>
@@ -48,16 +42,3 @@ int main() {
 
     return 0;
 }
-```
-
-## Output
-```Bash
-Vector of size: 3  and capacity: 3
-1 2 3 
-Vector of size: 2  and capacity: 3
-1 3 
-true
-Copy size: 2    and capacity: 100
-Copy size: 102  and capacity: 200
-Copy size: 0    and capacity: 200
-```
