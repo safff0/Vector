@@ -91,7 +91,7 @@ public:
         }
     }
 
-    Vector(const Vector<T, Allocator>&& other) : Vector() {
+    Vector(Vector<T, Allocator>&& other) : Vector() {
         Swap(other);
     }
 
@@ -99,17 +99,12 @@ public:
         if (this == &other) {
             return *this;
         }
-        Reset();
-        size_ = other.size_;
-        capacity_ = other.capacity_;
-        data_ = allocator_.allocate(capacity_);
-        for (size_t index = 0; index < size_; ++index) {
-            data_[index] = other[index];
-        }
+        Vector<T, Allocator> copy(other);
+        Swap(copy);
         return *this;
     }
 
-    Vector<T, Allocator>& operator=(const Vector<T, Allocator>&& other) {
+    Vector<T, Allocator>& operator=(Vector<T, Allocator>&& other) {
         if (this == &other) {
             return *this;
         }
